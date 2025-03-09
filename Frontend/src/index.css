@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import "tailwindcss";
+
+/* Global Reset */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    overflow: auto; /* ✅ Allows manual scrolling */
+    scroll-behavior: smooth; /* ✅ Smooth scrolling experience */
+}
+
+/* 🚀 Improved Neon Glow Effect */
+.neon-glow {
+    font-family: 'Bungee', cursive;
+    text-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 60px #FFD700;
+    animation: flicker 1.5s infinite alternate;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center; /* Ensures scaling happens from the center */
+}
+
+/* Flicker Animation */
+@keyframes flicker {
+    0% { text-shadow: 0 0 10px #FFD700, 0 0 30px #FFD700; }
+    50% { text-shadow: 0 0 20px #FFD700, 0 0 50px #FFD700; }
+    100% { text-shadow: 0 0 15px #FFD700, 0 0 40px #FFD700; }
+}
+
+/* 🚀 Size Increase on Hover */
+.neon-glow:hover {
+    transform: scale(1.1); /* ✅ Prevents text from getting cut */
+}
+
+/* 🚀 Text Below Gifly Adjusts Properly */
+.neon-glow:hover + .hero-text {
+    color: #FFAA00;
+    text-shadow: 0 0 15px #FFAA00, 0 0 30px #FFAA00, 0 0 60px #FFAA00;
+    transform: scale(1.05);
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 🛠 Fix Hidden Text Issue */
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh; /* ✅ Ensures enough space */
+    padding: 20px;
+    position: relative;
+    overflow: visible;
+}
+
+/* 🚀 Hero Text Adjustments */
+.hero-text {
+    font-family: 'Inter', sans-serif;
+    color: #bbb;
+    max-width: 600px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 🌧️ Fix Falling Doodles (Rain Effect) */
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* ✅ Ensure rain starts from top and fills page */
+.falling-doodle {
+    position: absolute;
+    top: -10vh;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    animation: fall linear infinite;
+}
+
+/* 🚀 Animated Scroll Down Arrow */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.scroll-down {
+    animation: bounce 1.5s infinite ease-in-out;
+}
