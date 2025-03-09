@@ -13,7 +13,14 @@ const port = process.env.PORT || 3000;
 
 
 app.use(express.json()); 
-app.use(cors()); 
+app.use(cors({
+    origin: "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app", 
+    methods: "GET,POST,OPTIONS",
+    allowedHeaders: "Content-Type,Authorization"
+}));
+
+// Handle preflight requests
+app.options('*', cors());
 
 
 app.use((req, res, next) => {
