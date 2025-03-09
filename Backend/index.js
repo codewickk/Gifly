@@ -13,8 +13,19 @@ const port = process.env.PORT || 3000;
 
 
 app.use(express.json()); 
+const allowedOrigins = [
+    "https://gifly-am73d8alh-codewickks-projects.vercel.app", 
+    "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app"
+];
+
 app.use(cors({
-    origin: "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app", 
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: "GET,POST,OPTIONS",
     allowedHeaders: "Content-Type,Authorization"
 }));
