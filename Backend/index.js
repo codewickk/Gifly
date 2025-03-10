@@ -20,22 +20,15 @@ const allowedOrigins = [
     "https://gifly-bj4fyuput-codewickks-projects.vercel.app"  
 ];
 
+
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods: "GET,POST,OPTIONS",
-    allowedHeaders: "Content-Type,Authorization"
-}));
-
-// Handle preflight requests
-app.options('*', cors());
-
-
+    origin: '*',  
+    methods: 'GET,POST,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization'
+  }));
+  
+  
+  app.options('*', cors());
 app.use((req, res, next) => {
   console.log('Request URL:', req.url);
   console.log('Request body:', JSON.stringify(req.body));
