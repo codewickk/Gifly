@@ -32,6 +32,9 @@ const corsOptions = {
 const inputSchema = z.object({
     url: z.string().url()
 });
+app.get('/test', (req, res) => {
+    res.json({ message: 'Backend is working!' });
+  });
 
 app.post('/generateTandGIF', async (req, res) => {
    
