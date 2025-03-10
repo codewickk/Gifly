@@ -16,7 +16,7 @@ const Display = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0); 
 
  
-  const API_BASE_URL = "";
+  const API_BASE_URL = "https://gifly.onrender.com";
 
 
   const patienceQuotes = [
