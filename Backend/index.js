@@ -11,16 +11,22 @@ const archiver = require('archiver');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json()); 
-app.use(cors());
-
-// Debugging Middleware
-app.use((req, res, next) => {
-    console.log('Incoming request:', req.method, req.url);
-    console.log('Headers:', req.headers);
-    next();
-});
-
+const corsOptions = {
+    origin: [
+      'https://gifly-7s6ohnt7x-codewickks-projects.vercel.app',
+      'https://gifly.vercel.app',
+      'http://localhost:3000',
+      'http://localhost:5173'  // For local development
+    ],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true  // Important for cookies/auth if you're using them
+  };
+  
+  // Apply CORS configuration
+  app.use(cors(corsOptions));
+  
+  app.use(express.json());
 
 const inputSchema = z.object({
     url: z.string().url()
