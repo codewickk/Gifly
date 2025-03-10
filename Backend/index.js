@@ -170,7 +170,7 @@ async function isUrlAccessible(url) {
     try {
         const browser = await puppeteer.launch({
             headless: true,
-            executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/google-chrome",
+            executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
             args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox']
         });
         
@@ -194,7 +194,7 @@ async function captureHeroSection(url, outputFile, options = {}) {
     
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/google-chrome",
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
         args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox']
     });
     
@@ -261,7 +261,7 @@ async function captureScrollingGif(url, outputFile, options = {}) {
     const browser = await puppeteer.launch({
         headless: true,
         defaultViewport: null,
-         executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/google-chrome",
+         executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
         args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox']
     });
     
