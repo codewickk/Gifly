@@ -16,7 +16,7 @@ const Display = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0); 
 
  
-  const API_BASE_URL = "https://gifly.onrender.com";
+  const API_BASE_URL = "https://localhost:3000/";
 
   const patienceQuotes = [
     "Rome wasn't built in a day.",
@@ -153,7 +153,7 @@ const Display = () => {
 
 
   useEffect(() => {
-    // This effect updates the download buttons when ZIP option changes
+
     if (previewImage !== DefaultImage && previewGif !== DefaultGif) {
       console.log(`ZIP download option is now: ${downloadAsZip ? 'enabled' : 'disabled'}`);
     }

@@ -11,32 +11,11 @@ const archiver = require('archiver');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Dynamic CORS for Render deployment
-const corsOptions = {
-    origin: [
-        'https://gifly-1.onrender.com', // Frontend on Render
-        'http://localhost:5173'        // For local testing
-    ],
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
-console.log("Finding installed browsers...");
-
-(async () => {
-    const browsersDir = "/opt/render/.cache/puppeteer/chrome/";
-    
-    try {
-        const files = fs.readdirSync(browsersDir);
-        console.log("Available Puppeteer Chrome versions:", files);
-    } catch (error) {
-        console.error("Error reading Puppeteer browser directory:", error);
-    }
-})();
 const inputSchema = z.object({
     url: z.string().url()
 });
@@ -181,7 +160,6 @@ async function isUrlAccessible(url) {
     try {
         const browser = await puppeteer.launch({
             headless: true,
-            executablePath:  puppeteer.executablePath(),
             args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox']
         });
         
@@ -272,7 +250,6 @@ async function captureScrollingGif(url, outputFile, options = {}) {
     const browser = await puppeteer.launch({
         headless: true,
         defaultViewport: null,
-         executablePath: puppeteer.executablePath(),
         args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox']
     });
     
