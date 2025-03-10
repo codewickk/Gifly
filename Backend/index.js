@@ -16,7 +16,8 @@ const corsOptions = {
       'https://gifly-7s6ohnt7x-codewickks-projects.vercel.app',
       'https://gifly.vercel.app',
       'http://localhost:3000',
-      'http://localhost:5173'  // For local development
+      'http://localhost:5173',
+      'https://gifly-ten.vercel.app'  
     ],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
