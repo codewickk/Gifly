@@ -85,7 +85,8 @@ const Display = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify(requestBody),
+        credentials:'include'
       });
       
       if (!response.ok) {
