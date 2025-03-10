@@ -15,7 +15,8 @@ const port = process.env.PORT || 3000;
 app.use(express.json()); 
 const allowedOrigins = [
     "https://gifly-am73d8alh-codewickks-projects.vercel.app", 
-    "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app"
+    "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app",
+    "https://gifly.onrender.com"  
 ];
 
 app.use(cors({
