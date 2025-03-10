@@ -35,7 +35,7 @@ app.get('/test', (req, res) => {
   });
 
 app.post('/generateTandGIF', async (req, res) => {
-   
+   console.log("the route works properly")
     const inputUrl = req.body.url;
     
     const options = req.body.options || {};
