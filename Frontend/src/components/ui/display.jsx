@@ -71,8 +71,7 @@ const Display = () => {
       const requestBody = {
         url: url,
         options: {
-          scrollStep: scrollStepMap[scrollSpeed],
-          downloadAsZip: downloadAsZip
+          scrollStep: scrollStepMap[scrollSpeed]
         }
       };
       
