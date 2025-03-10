@@ -11,36 +11,8 @@ const archiver = require('archiver');
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 app.use(express.json()); 
-const allowedOrigins = [
-    "https://gifly-am73d8alh-codewickks-projects.vercel.app", 
-    "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app",
-    "https://gifly.onrender.com",
-    "https://gifly-bj4fyuput-codewickks-projects.vercel.app"
-];
-
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods: "GET,POST,OPTIONS",
-    allowedHeaders: "Content-Type,Authorization",
-    credentials: true // Allow cookies/auth headers
-}));
-
-// Ensure preflight requests are handled
-app.options('*', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.sendStatus(204); // No content response
-});
+app.use(cors());
 
 // Debugging Middleware
 app.use((req, res, next) => {
