@@ -16,7 +16,8 @@ app.use(express.json());
 const allowedOrigins = [
     "https://gifly-am73d8alh-codewickks-projects.vercel.app", 
     "https://gifly-e8qrs6zpp-codewickks-projects.vercel.app",
-    "https://gifly.onrender.com"  
+    "https://gifly.onrender.com",
+    "https://gifly-bj4fyuput-codewickks-projects.vercel.app"  
 ];
 
 app.use(cors({
