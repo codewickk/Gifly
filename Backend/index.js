@@ -25,7 +25,18 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
+console.log("Finding installed browsers...");
 
+(async () => {
+    const browsersDir = "/opt/render/.cache/puppeteer/chrome/";
+    
+    try {
+        const files = fs.readdirSync(browsersDir);
+        console.log("Available Puppeteer Chrome versions:", files);
+    } catch (error) {
+        console.error("Error reading Puppeteer browser directory:", error);
+    }
+})();
 const inputSchema = z.object({
     url: z.string().url()
 });
