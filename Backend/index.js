@@ -13,13 +13,17 @@ const port = process.env.PORT || 3000;
 
 // Dynamic CORS for Render deployment
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || '*',
+    origin: [
+        'https://gifly-1.onrender.com', // Frontend on Render
+        'http://localhost:5173'        // For local testing
+    ],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 };
 
 app.use(cors(corsOptions));
+
 app.use(express.json());
 
 
